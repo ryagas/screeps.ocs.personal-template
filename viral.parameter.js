@@ -152,5 +152,7 @@ let mod = {
     AUTO_POWER_MINING: false, //set to false to disable power mining (recomended until 1-2 RCL8+ rooms)
     MAX_AUTO_POWER_MINING_FLAGS: 1,
     POWER_MINE_LOG: true, //displays power mining info in console
+    SEMI_AUTOMATIC_CONSTRUCTION: true, // enables semi-automatic construction. Will construct based on flags.
+
 };
 module.exports = mod;
