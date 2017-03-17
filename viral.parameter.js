@@ -32,9 +32,9 @@ let mod = {
         MINERAL: true, // displays mineral amount, or ticks to regen
         SOURCE: true, // displays energy amount, or ticks to regen
         CREEP: true, // draws creep paths
-        WALL: false, // highlight weakest wall and display hits
-        RAMPART: false, // highlight weakest rampart and display hits
-        ROAD: false, // highlight weakest road and display hits
+        WALL: true, // highlight weakest wall and display hits
+        RAMPART: true, // highlight weakest rampart and display hits
+        ROAD: true, // highlight weakest road and display hits
         HEATMAP: false, // collects creep positioning to display a heatmap
         HEATMAP_INTERVAL: 2, // intervals between collections
     },
@@ -44,8 +44,8 @@ let mod = {
         3: 2000,
         4: 5000,
         5: 10000,
-        6: 25000,
-        7: 50000,
+        6: 50000,
+        7: 75000,
         8: 300000
     },
     MIN_STORAGE_ENERGY: { // prefer storing energy until reached
@@ -54,8 +54,8 @@ let mod = {
         3: 1000,
         4: 1000,
         5: 5000,
-        6: 10000,
-        7: 25000,
+        6: 25000,
+        7: 30000,
         8: 50000
     },
     MAX_STORAGE_MINERAL:200000, // keep a max of each type of minerals in store
@@ -102,7 +102,7 @@ let mod = {
     REPORT_MAX_LENGTH: 500,
     REPORTS_PER_LOOP: 18,
     SEND_STATISTIC_REPORTS: true, // Set to true to receive room statistics per mail, otherwise set to false.
-    ROAD_CONSTRUCTION_ENABLE: false, // Set to False to disable automatic road construction, or to a number to enable for owned rooms reaching that RC Level
+    ROAD_CONSTRUCTION_ENABLE: 3, // Set to False to disable automatic road construction, or to a number to enable for owned rooms reaching that RC Level
     ROAD_CONSTRUCTION_INTERVAL: 500,
     ROAD_CONSTRUCTION_MIN_DEVIATION: 1.2,
     ROAD_CONSTRUCTION_ABS_MIN: 3,
@@ -136,7 +136,7 @@ let mod = {
     REMOTE_HAULER_ALLOW_OVER_CAPACITY: true, // Hauler capacity rounds up by MIN_WEIGHT, or this number value.
     REMOTE_HAULER_DRIVE_BY_BUILDING: true, // Allows remote haulers to build roads and containers. Consider setting REMOTE_WORKER_MULTIPLIER to 0.
     REMOTE_HAULER_DRIVE_BY_BUILD_RANGE: 1, // A creep's max build distance is 3 but cpu can be saved by dropping the search distance to 1.
-    REMOTE_HAULER_DRIVE_BY_BUILD_ALL: true, // If REMOTE_HAULER_DRIVE_BY_BUILDING is enabled then this option will allow remote haulers will drive-by-build any of your structures.
+    REMOTE_HAULER_DRIVE_BY_BUILD_ALL: false, // If REMOTE_HAULER_DRIVE_BY_BUILDING is enabled then this option will allow remote haulers will drive-by-build any of your structures.
     PIONEER_UNOWNED: false, // True: pioneers may attempt to work in unowned rooms.
     DRIVE_BY_REPAIR_RANGE: 1, // range that creeps should search when trying to repair and move
     REMOTE_WORKER_MULTIPLIER: 0, // Number of workers spawned per remote mining room.
