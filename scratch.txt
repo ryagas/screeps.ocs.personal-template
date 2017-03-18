@@ -1,0 +1,9 @@
+Game.rooms['W48N63'].placeRoomOrder('WEALTH!!!', RESOURCE_ENERGY, 250000);
+Game.rooms['W49N68'].updateRoomOrders();
+
+Game.rooms['W49N67'].placeReactionOrder('da UH', RESOURCE_UTRIUM_HYDRIDE, 3000);
+5894a78eb7f3e95e6d9c4ef3
+Game.rooms['W49N67'].setStore('5894a78eb7f3e95e6d9c4ef3', RESOURCE_UTRIUM, 3000);
+Game.rooms['W49N67'].setStore('5894a78eb7f3e95e6d9c4ef3', RESOURCE_HYDROGEN, 3000);
+
+Game.rooms['W49N68'].registerReactorFlower('58be66eb476c8d66ea7c3984','58a25901763abb4e6cacf916' );
