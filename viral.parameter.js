@@ -68,11 +68,11 @@ let mod = {
     MIN_SELL_RATIO: {
         'H': 0.2,
         'O': 0.2,
-        'U': 0.3,
-        'L': 0.3,
-        'K': 0.3,
-        'Z': 0.3,
-        'X': 0.4
+        'U': 0.2, 
+        'L': 0.2, 
+        'K': 0.2, 
+        'Z': 0.2, 
+        'X': 0.2 
     },
     MAX_REPAIR_LIMIT: { // Limits how high structures get repaired by towers, regarding RCL
         1: 1000,
@@ -106,7 +106,7 @@ let mod = {
     ROAD_CONSTRUCTION_INTERVAL: 500,
     ROAD_CONSTRUCTION_MIN_DEVIATION: 1.2,
     ROAD_CONSTRUCTION_ABS_MIN: 3,
-    TIME_ZONE: 1, // zone offset in hours (-12 through +12) from UTC
+    TIME_ZONE: -8, // zone offset in hours (-12 through +12) from UTC
     USE_SUMMERTIME: true, // Please define isSummerTime in global.js to suit to your local summertime rules
     SPAWN_DEFENSE_ON_ATTACK: true, // This will attempt to store enough to have a defense and spawn troops when invaded.
     MANAGED_CONTAINER_TRIGGER: 0.25, // managed containers get filled below this relative energy amount and emptied when above 1-this value
@@ -134,17 +134,17 @@ let mod = {
     REMOTE_HAULER_MIN_LOAD: 0.75, // Haulers will return home as long as their ratio of carrying/capacity is above this amount.
     REMOTE_HAULER_MIN_WEIGHT: 900, // Small haulers are a CPU drain.
     REMOTE_HAULER_ALLOW_OVER_CAPACITY: true, // Hauler capacity rounds up by MIN_WEIGHT, or this number value.
-    REMOTE_HAULER_DRIVE_BY_BUILDING: false, // Allows remote haulers to build roads and containers. Consider setting REMOTE_WORKER_MULTIPLIER to 0.
+    REMOTE_HAULER_DRIVE_BY_BUILDING: true, // Allows remote haulers to build roads and containers. Consider setting REMOTE_WORKER_MULTIPLIER to 0.
     REMOTE_HAULER_DRIVE_BY_BUILD_RANGE: 1, // A creep's max build distance is 3 but cpu can be saved by dropping the search distance to 1.
     REMOTE_HAULER_DRIVE_BY_BUILD_ALL: false, // If REMOTE_HAULER_DRIVE_BY_BUILDING is enabled then this option will allow remote haulers will drive-by-build any of your structures.
     PIONEER_UNOWNED: false, // True: pioneers may attempt to work in unowned rooms.
     DRIVE_BY_REPAIR_RANGE: 1, // range that creeps should search when trying to repair and move
-    REMOTE_WORKER_MULTIPLIER: 1, // Number of workers spawned per remote mining room.
+    REMOTE_WORKER_MULTIPLIER: 0, // Number of workers spawned per remote mining room.
     PLAYER_WHITELIST: ['cyberblast','SirLovi','Asku','Kazume','Noxeth','MrDave','Telemac','Xephael','Zoiah','fsck-u','FaceWound','forkmantis','Migaaresno','xAix1999','silentpoots','arguinyano','OokieCookie','OverlordQ','Nibinhilion','Crowsbane','Yew','BogdanBiv','s1akr','Pandabear41','Logmadr','Patrik','novice','Conquest','ofirl','GeorgeBerkeley','TTR','tynstar','K-C','Hoekynl','Sunri5e','AgOrange','distantcam','Lisp','bbdMinimbl','Twill','Logxen','miR','Spedwards','Krazyfuq','Icesory','chobobobo','deft-code','mmmd','DKPlugins','pavelnieks','buckley310','almaravarion','SSH','Perrytheplatypus','Jnesselr','ryagas','xXtheguy52Xx','SEATURTLEKING','DasBrain','C00k1e_93','Currency'],
     // Don't attack. Must be a member of OCS for permanent whitelisting in git repository. But you can change your own copy... Please ask if you are interested in joining OCS :)
     DEFENSE_BLACKLIST: [], // Don't defend those rooms (add room names). Blocks spawning via defense task (will not prevent offensive actions at all)
     CRITICAL_BUCKET_LEVEL: 1000, // take action when the bucket drops below this value to prevent the bucket from actually running out
-    CRITICAL_BUCKET_OVERFILL: 300, // Overfill the bucket by this amount before disabling CPU throttle, this can reduce thrashing because all creeps try to act at once
+    CRITICAL_BUCKET_OVERFILL: 1000, // Overfill the bucket by this amount before disabling CPU throttle, this can reduce thrashing because all creeps try to act at once
     CRITICAL_ROLES: [ 'melee', 'ranger', 'healer', 'miner', 'hauler', 'upgrader' ], // when the bucket drops below the critical bucket level only these creep roles will be executed
     OBSERVER_OBSERVE_RANGE: 3, // the range for observers to look at
     OBSERVER_PRIORITISE_HIGHWAY: true, // the observers will look at highways first

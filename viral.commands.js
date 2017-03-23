@@ -1,7 +1,7 @@
 // useful commands
 
 // Recycle a creep
-Creep.action.recycling.assign(Game.creeps['<creepName>']);
+Creep.action.recycling.assign(Game.creeps['max-1']);
 
 // flush road construction traces
 _.forEach(Memory.rooms, r => delete r.roadConstructionTrace);
@@ -10,9 +10,9 @@ _.forEach(Memory.rooms, r => delete r.roadConstructionTrace);
 _.forEach(Game.constructionSites, s => s.remove());
 
 // spawn something...
-Game.spawns['<spawnName>'].createCreepBySetup(Creep.setup.worker);
+Game.spawns['W47N62'].createCreepBySetup(Creep.setup.upgrader);
 // or
-Game.rooms['<roomName>'].spawnQueueLow.push({parts:[MOVE,WORK,CARRY],name:'max',setup:'worker'});
+Game.rooms['W47N62'].spawnQueueLow.push({parts:[MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY],name:'max',setup:'upgrader'});
 
 // clear spawn queues for a room
 // clear low priority queue
