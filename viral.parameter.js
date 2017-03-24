@@ -3,7 +3,7 @@ let mod = {
     HONK: true, // HONK when stored path is blocked by other creeps
     OOPS: true, // Creeps say Oops when dropping energy during dropmining
     SAY_ASSIGNMENT: true, // say a symbol representing the assiged action
-    SAY_PUBLIC: false, // creeps talk public
+    SAY_PUBLIC: true, // creeps talk public
     DEBUG: true, // gimme some more details, use false not undefined to unset
     TRACE: false, // use Memory.debugTrace for low-level information
     TRAVELER_STUCK_TICKS: 2, // Number of ticks not moving to be considered stuck by the Traveler API
@@ -16,25 +16,25 @@ let mod = {
     SELL_NOTIFICATION: true, // send mail when selling minerals
     SPAWN_INTERVAL: 5, // loops between regular spawn probe
     ROOM_VISUALS: true, // display basic room statistics with RoomVisuals
-    ROOM_VISUALS_ALL: true, // displays visuals in all rooms you have vision in. Only your rooms when false.
+    ROOM_VISUALS_ALL: false, // displays visuals in all rooms you have vision in. Only your rooms when false.
     VISUALS: { // if ROOM_VISUALS is enabled, you can select what you want to display - All is a bit much for some people.
         ROOM: true, // displays basic info relative to the room
-        ROOM_GLOBAL: true, // displays basic info relative to your account - requires ROOM: true
+        ROOM_GLOBAL: false, // displays basic info relative to your account - requires ROOM: true
         CPU: true, // display a graph containing CPU used, CPU limit, and bucket
         ROOM_ORDERS: true, // display orders the room creates
         ROOM_OFFERS: true, // display what a room will offer another
         SPAWN: true, // displays creep name and spawn progress percentage when spawning
         CONTROLLER: true, // displays level, progress, and ticks to downgrade if active
         STORAGE: true, // displays storage contents
-        TERMINAL: true, // displays terminal contents
+        TERMINAL: false, // displays terminal contents
         TRANSACTIONS: false, // displays 2 most recent transactions over room terminal
-        LABS: true, // displays lab energy, mineral, or cooldown
-        MINERAL: true, // displays mineral amount, or ticks to regen
-        SOURCE: true, // displays energy amount, or ticks to regen
-        CREEP: true, // draws creep paths
-        WALL: true, // highlight weakest wall and display hits
-        RAMPART: true, // highlight weakest rampart and display hits
-        ROAD: true, // highlight weakest road and display hits
+        LABS: false, // displays lab energy, mineral, or cooldown
+        MINERAL: false, // displays mineral amount, or ticks to regen
+        SOURCE: false, // displays energy amount, or ticks to regen
+        CREEP: false, // draws creep paths
+        WALL: false, // highlight weakest wall and display hits
+        RAMPART: false, // highlight weakest rampart and display hits
+        ROAD: false, // highlight weakest road and display hits
         HEATMAP: false, // collects creep positioning to display a heatmap
         HEATMAP_INTERVAL: 2, // intervals between collections
     },
@@ -134,18 +134,24 @@ let mod = {
     REMOTE_HAULER_MIN_LOAD: 0.75, // Haulers will return home as long as their ratio of carrying/capacity is above this amount.
     REMOTE_HAULER_MIN_WEIGHT: 900, // Small haulers are a CPU drain.
     REMOTE_HAULER_ALLOW_OVER_CAPACITY: true, // Hauler capacity rounds up by MIN_WEIGHT, or this number value.
-    REMOTE_HAULER_DRIVE_BY_BUILDING: true, // Allows remote haulers to build roads and containers. Consider setting REMOTE_WORKER_MULTIPLIER to 0.
+    REMOTE_HAULER_DRIVE_BY_BUILDING: false, // Allows remote haulers to build roads and containers. Consider setting REMOTE_WORKER_MULTIPLIER to 0.
     REMOTE_HAULER_DRIVE_BY_BUILD_RANGE: 1, // A creep's max build distance is 3 but cpu can be saved by dropping the search distance to 1.
     REMOTE_HAULER_DRIVE_BY_BUILD_ALL: false, // If REMOTE_HAULER_DRIVE_BY_BUILDING is enabled then this option will allow remote haulers will drive-by-build any of your structures.
     PIONEER_UNOWNED: false, // True: pioneers may attempt to work in unowned rooms.
     DRIVE_BY_REPAIR_RANGE: 1, // range that creeps should search when trying to repair and move
-    REMOTE_WORKER_MULTIPLIER: 0, // Number of workers spawned per remote mining room.
+    REMOTE_WORKER_MULTIPLIER: 1, // Number of workers spawned per remote mining room.
     PLAYER_WHITELIST: ['cyberblast','SirLovi','Asku','Kazume','Noxeth','MrDave','Telemac','Xephael','Zoiah','fsck-u','FaceWound','forkmantis','Migaaresno','xAix1999','silentpoots','arguinyano','OokieCookie','OverlordQ','Nibinhilion','Crowsbane','Yew','BogdanBiv','s1akr','Pandabear41','Logmadr','Patrik','novice','Conquest','ofirl','GeorgeBerkeley','TTR','tynstar','K-C','Hoekynl','Sunri5e','AgOrange','distantcam','Lisp','bbdMinimbl','Twill','Logxen','miR','Spedwards','Krazyfuq','Icesory','chobobobo','deft-code','mmmd','DKPlugins','pavelnieks','buckley310','almaravarion','SSH','Perrytheplatypus','Jnesselr','ryagas','xXtheguy52Xx','SEATURTLEKING','DasBrain','C00k1e_93','Currency'],
     // Don't attack. Must be a member of OCS for permanent whitelisting in git repository. But you can change your own copy... Please ask if you are interested in joining OCS :)
     DEFENSE_BLACKLIST: [], // Don't defend those rooms (add room names). Blocks spawning via defense task (will not prevent offensive actions at all)
     CRITICAL_BUCKET_LEVEL: 1000, // take action when the bucket drops below this value to prevent the bucket from actually running out
-    CRITICAL_BUCKET_OVERFILL: 1000, // Overfill the bucket by this amount before disabling CPU throttle, this can reduce thrashing because all creeps try to act at once
-    CRITICAL_ROLES: [ 'melee', 'ranger', 'healer', 'miner', 'hauler', 'upgrader' ], // when the bucket drops below the critical bucket level only these creep roles will be executed
+    CRITICAL_BUCKET_OVERFILL: 500, // Overfill the bucket by this amount before disabling CPU throttle, this can reduce thrashing because all creeps try to act at once
+    CRITICAL_ROLES: [ 
+        'melee', 
+        'ranger', 
+        'healer', 
+        //'miner', 
+        'hauler', 
+        'upgrader' ], // when the bucket drops below the critical bucket level only these creep roles will be executed
     OBSERVER_OBSERVE_RANGE: 3, // the range for observers to look at
     OBSERVER_PRIORITISE_HIGHWAY: true, // the observers will look at highways first
     OBSERVER_OBSERVE_HIGHWAYS_ONLY: true, // the observers will only look at highways - changing this will require you to clear cached rooms
