@@ -19,7 +19,7 @@ let mod = {
         ROOM_GLOBAL: false, // displays basic info relative to your account - requires ROOM: true
         CPU: true, // display a graph containing CPU used, CPU limit, and bucket
         ROOM_ORDERS: true, // display orders the room creates
-        ROOM_OFFERS: false, // display what a room will offer another
+        ROOM_OFFERS: true, // display what a room will offer another
         SPAWN: false, // displays creep name and spawn progress percentage when spawning
         CONTROLLER: false, // displays level, progress, and ticks to downgrade if active
         STORAGE: true, // displays storage contents
@@ -111,8 +111,8 @@ let mod = {
     REMOTE_HAULER_DRIVE_BY_BUILD_RANGE: 1, // A creep's max build distance is 3 but cpu can be saved by dropping the search distance to 1.
 //    REMOTE_HAULER_DRIVE_BY_BUILD_ALL: false, // If REMOTE_HAULER_DRIVE_BY_BUILDING is enabled then this option will allow remote haulers will drive-by-build any of your structures.
 //    PIONEER_UNOWNED: false, // True: pioneers may attempt to work in unowned rooms.
-    DRIVE_BY_REPAIR_RANGE: 1, // range that creeps should search when trying to repair and move
-    REMOTE_WORKER_MULTIPLIER: 0, // Number of workers spawned per remote mining room.
+    DRIVE_BY_REPAIR_RANGE: 2, // range that creeps should search when trying to repair and move
+    REMOTE_WORKER_MULTIPLIER: 1, // Number of workers spawned per remote mining room.
     PLAYER_WHITELIST: ['cyberblast','SirLovi','Asku','Kazume','Noxeth','MrDave','Telemac','Xephael','Zoiah','fsck-u','FaceWound','forkmantis','Migaaresno','xAix1999','silentpoots','arguinyano','OokieCookie','OverlordQ','Nibinhilion','Crowsbane','Yew','BogdanBiv','s1akr','Pandabear41','Logmadr','Patrik','novice','Conquest','ofirl','GeorgeBerkeley','TTR','tynstar','K-C','Hoekynl','Sunri5e','AgOrange','distantcam','Lisp','bbdMinimbl','Twill','Logxen','miR','Spedwards','Krazyfuq','Icesory','chobobobo','deft-code','mmmd','DKPlugins','pavelnieks','buckley310','almaravarion','SSH','Perrytheplatypus','Jnesselr','ryagas','xXtheguy52Xx','SEATURTLEKING','DasBrain','C00k1e_93','Currency', 'Bovius','Vykook','shedletsky','Aranatha','Montblanc'],
     // Don't attack. Must be a member of OCS for permanent whitelisting in git repository. But you can change your own copy... Please ask if you are interested in joining OCS :)
     DEFENSE_BLACKLIST: [], // Don't defend those rooms (add room names). Blocks spawning via defense task (will not prevent offensive actions at all)
