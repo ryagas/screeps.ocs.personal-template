@@ -6,7 +6,8 @@ setup._maxCount = function(room){
       //        case 'ROOMNAME':
       //            return Math.max(1, count - 1); // one fewer
       case 'W47N66':
-                  return count + 1; // one more
+      case 'W47N62':
+                  return count + 2; // 2 more
       default:
           return count;
     }
