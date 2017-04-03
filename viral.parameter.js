@@ -12,18 +12,18 @@ let mod = {
     CENSUS_ANNOUNCEMENTS: true, // log birth and death
     SELL_NOTIFICATION: true, // send mail when selling minerals
     SPAWN_INTERVAL: 4, // loops between regular spawn probe
-    ROOM_VISUALS: true, // display basic room statistics with RoomVisuals
+    ROOM_VISUALS: false, // display basic room statistics with RoomVisuals
     ROOM_VISUALS_ALL: false, // displays visuals in all rooms you have vision in. Only your rooms when false.
     VISUALS: { // if ROOM_VISUALS is enabled, you can select what you want to display - All is a bit much for some people.
-        ROOM: true, // displays basic info relative to the room
+        ROOM: false, // displays basic info relative to the room
         ROOM_GLOBAL: false, // displays basic info relative to your account - requires ROOM: true
         CPU: false, // display a graph containing CPU used, CPU limit, and bucket
-        ROOM_ORDERS: true, // display orders the room creates
-        ROOM_OFFERS: true, // display what a room will offer another
-        SPAWN: true, // displays creep name and spawn progress percentage when spawning
+        ROOM_ORDERS: false, // display orders the room creates
+        ROOM_OFFERS: false, // display what a room will offer another
+        SPAWN: false, // displays creep name and spawn progress percentage when spawning
         CONTROLLER: false, // displays level, progress, and ticks to downgrade if active
-        STORAGE: true, // displays storage contents
-        TERMINAL: true, // displays terminal contents
+        STORAGE: false, // displays storage contents
+        TERMINAL: false, // displays terminal contents
         TRANSACTIONS: false, // displays 2 most recent transactions over room terminal
         LABS: false, // displays lab energy, mineral, or cooldown
         MINERAL: false, // displays mineral amount, or ticks to regen
@@ -86,7 +86,8 @@ let mod = {
     ROUTE_ROOM_COST: {
         'W47N65': Infinity,
         'W48N64': Infinity,
-        'W47N64': Infinity
+        'W47N64': Infinity,
+        'W46N67': 10000
     }, // custom room routing cost: e.g. `{ 'W4N4': 11 }`. Affects bestSpawnRoomFor, Creep.Setup calculations, and travel cost predictions. Please call 'delete Memory.routeRange;' whenever you change this property.
 //    TRAVELLING_BORDER_RANGE: 22, // room arrival distance for travelling and routes
 //    NOTIFICATE_INVADER: false, // Also log common 'Invader' hostiles
@@ -117,7 +118,7 @@ let mod = {
     // Don't attack. Must be a member of OCS for permanent whitelisting in git repository. But you can change your own copy... Please ask if you are interested in joining OCS :)
     DEFENSE_BLACKLIST: [], // Don't defend those rooms (add room names). Blocks spawning via defense task (will not prevent offensive actions at all)
 //    CRITICAL_BUCKET_LEVEL: 1000, // take action when the bucket drops below this value to prevent the bucket from actually running out
-//    CRITICAL_BUCKET_OVERFILL: 200, // Overfill the bucket by this amount before disabling CPU throttle, this can reduce thrashing because all creeps try to act at once
+    CRITICAL_BUCKET_OVERFILL: 400, // Overfill the bucket by this amount before disabling CPU throttle, this can reduce thrashing because all creeps try to act at once
     CRITICAL_ROLES: [
         'melee',
         'ranger',
