@@ -11,16 +11,16 @@ let mod = {
     GRAFANA_INTERVAL: 3, // loops between Grafana tracking - No lower than 3.
     CENSUS_ANNOUNCEMENTS: true, // log birth and death
     SELL_NOTIFICATION: true, // send mail when selling minerals
-    SPAWN_INTERVAL: 3, // loops between regular spawn probe
+    SPAWN_INTERVAL: 4, // loops between regular spawn probe
     ROOM_VISUALS: true, // display basic room statistics with RoomVisuals
     ROOM_VISUALS_ALL: false, // displays visuals in all rooms you have vision in. Only your rooms when false.
     VISUALS: { // if ROOM_VISUALS is enabled, you can select what you want to display - All is a bit much for some people.
         ROOM: true, // displays basic info relative to the room
         ROOM_GLOBAL: false, // displays basic info relative to your account - requires ROOM: true
-        CPU: true, // display a graph containing CPU used, CPU limit, and bucket
+        CPU: false, // display a graph containing CPU used, CPU limit, and bucket
         ROOM_ORDERS: true, // display orders the room creates
         ROOM_OFFERS: true, // display what a room will offer another
-        SPAWN: false, // displays creep name and spawn progress percentage when spawning
+        SPAWN: true, // displays creep name and spawn progress percentage when spawning
         CONTROLLER: false, // displays level, progress, and ticks to downgrade if active
         STORAGE: true, // displays storage contents
         TERMINAL: true, // displays terminal contents
@@ -101,13 +101,13 @@ let mod = {
     MINERS_AUTO_BUILD: true, // miners and remoteMiners will build their own containers if they are missing.
     MINER_WORK_THRESHOLD: 25, // how long to wait before a miner checks for repairs/construction sites nearby again
 //    REMOTE_HAULER_MULTIPLIER: 1, // Max number of haulers spawned per source in a remote mining room.
-    REMOTE_HAULER_CHECK_INTERVAL: 3, // how many ticks before we check to see if new haulers need spawninig?
+    REMOTE_HAULER_CHECK_INTERVAL: 4, // how many ticks before we check to see if new haulers need spawninig?
 //    REMOTE_RESERVE_HAUL_CAPACITY: 0.1, // Percent of allocated haul capacity before sending reservers.
     REMOTE_HAULER_REHOME: true, // May haulers choose closer storage for delivery?
-    REMOTE_HAULER_MIN_LOAD: 0.85, // Haulers will return home as long as their ratio of carrying/capacity is above this amount.
+    REMOTE_HAULER_MIN_LOAD: 0.75, // Haulers will return home as long as their ratio of carrying/capacity is above this amount.
     REMOTE_HAULER_MIN_WEIGHT: 900, // Small haulers are a CPU drain.
 //    REMOTE_HAULER_ALLOW_OVER_CAPACITY: false, // Hauler capacity rounds up by MIN_WEIGHT, or this number value.
-    REMOTE_HAULER_DRIVE_BY_BUILDING: true, // Allows remote haulers to build roads and containers. Consider setting REMOTE_WORKER_MULTIPLIER to 0.
+    REMOTE_HAULER_DRIVE_BY_BUILDING: false, // Allows remote haulers to build roads and containers. Consider setting REMOTE_WORKER_MULTIPLIER to 0.
     REMOTE_HAULER_DRIVE_BY_BUILD_RANGE: 1, // A creep's max build distance is 3 but cpu can be saved by dropping the search distance to 1.
 //    REMOTE_HAULER_DRIVE_BY_BUILD_ALL: false, // If REMOTE_HAULER_DRIVE_BY_BUILDING is enabled then this option will allow remote haulers will drive-by-build any of your structures.
 //    PIONEER_UNOWNED: false, // True: pioneers may attempt to work in unowned rooms.
