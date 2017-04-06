@@ -12,15 +12,15 @@ let mod = {
     CENSUS_ANNOUNCEMENTS: true, // log birth and death
     SELL_NOTIFICATION: true, // send mail when selling minerals
     SPAWN_INTERVAL: 4, // loops between regular spawn probe
-    ROOM_VISUALS: false, // display basic room statistics with RoomVisuals
+    ROOM_VISUALS: true, // display basic room statistics with RoomVisuals
     ROOM_VISUALS_ALL: false, // displays visuals in all rooms you have vision in. Only your rooms when false.
     VISUALS: { // if ROOM_VISUALS is enabled, you can select what you want to display - All is a bit much for some people.
-        ROOM: false, // displays basic info relative to the room
-        ROOM_GLOBAL: false, // displays basic info relative to your account - requires ROOM: true
+        ROOM: true, // displays basic info relative to the room
+        ROOM_GLOBAL: true, // displays basic info relative to your account - requires ROOM: true
         CPU: false, // display a graph containing CPU used, CPU limit, and bucket
         ROOM_ORDERS: false, // display orders the room creates
         ROOM_OFFERS: false, // display what a room will offer another
-        SPAWN: false, // displays creep name and spawn progress percentage when spawning
+        SPAWN: true, // displays creep name and spawn progress percentage when spawning
         CONTROLLER: false, // displays level, progress, and ticks to downgrade if active
         STORAGE: false, // displays storage contents
         TERMINAL: false, // displays terminal contents
@@ -45,6 +45,8 @@ let mod = {
         7: 30000,
         8: 50000
     },
+    MAX_STORAGE_MINERAL:20000, // keep a max of each type of minerals in store
+
     //MAX_SELL_RANGE: 60,
     //TERMINAL_ENERGY: 100000,
     //MAX_REPAIR_LIMIT: { // Limits how high structures get repaired by towers, regarding RCL
@@ -112,7 +114,7 @@ let mod = {
     REMOTE_HAULER_DRIVE_BY_BUILD_RANGE: 1, // A creep's max build distance is 3 but cpu can be saved by dropping the search distance to 1.
 //    REMOTE_HAULER_DRIVE_BY_BUILD_ALL: false, // If REMOTE_HAULER_DRIVE_BY_BUILDING is enabled then this option will allow remote haulers will drive-by-build any of your structures.
 //    PIONEER_UNOWNED: false, // True: pioneers may attempt to work in unowned rooms.
-    DRIVE_BY_REPAIR_RANGE: 2, // range that creeps should search when trying to repair and move
+    DRIVE_BY_REPAIR_RANGE: 1, // range that creeps should search when trying to repair and move
     REMOTE_WORKER_MULTIPLIER: 1, // Number of workers spawned per remote mining room.
     PLAYER_WHITELIST: ['cyberblast','SirLovi','Asku','Kazume','Noxeth','MrDave','Telemac','Xephael','Zoiah','fsck-u','FaceWound','forkmantis','Migaaresno','xAix1999','silentpoots','arguinyano','OokieCookie','OverlordQ','Nibinhilion','Crowsbane','Yew','BogdanBiv','s1akr','Pandabear41','Logmadr','Patrik','novice','Conquest','ofirl','GeorgeBerkeley','TTR','tynstar','K-C','Hoekynl','Sunri5e','AgOrange','distantcam','Lisp','bbdMinimbl','Twill','Logxen','miR','Spedwards','Krazyfuq','Icesory','chobobobo','deft-code','mmmd','DKPlugins','pavelnieks','buckley310','almaravarion','SSH','Perrytheplatypus','Jnesselr','ryagas','xXtheguy52Xx','SEATURTLEKING','DasBrain','C00k1e_93','Currency', 'Bovius','Vykook','shedletsky','Aranatha','Montblanc'],
     // Don't attack. Must be a member of OCS for permanent whitelisting in git repository. But you can change your own copy... Please ask if you are interested in joining OCS :)
