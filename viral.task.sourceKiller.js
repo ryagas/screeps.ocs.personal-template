@@ -29,7 +29,9 @@ mod.checkForRequiredCreeps = (flag) => {
             },
             { // spawn room selection params
                 targetRoom: flag.pos.roomName,
-                minRCL: 7,
+                minRCL: 7, // otherwise, creep too big to spawn
+                minEnergyCapacity: 1000,
+                minRange: 1,
                 maxRange: 2,
                 allowTargetRoom: true
             },

@@ -18,14 +18,14 @@ let mod = {
         ROOM: true, // displays basic info relative to the room
         ROOM_GLOBAL: true, // displays basic info relative to your account - requires ROOM: true
         CPU: false, // display a graph containing CPU used, CPU limit, and bucket
-        ROOM_ORDERS: false, // display orders the room creates
-        ROOM_OFFERS: false, // display what a room will offer another
+        ROOM_ORDERS: true, // display orders the room creates
+        ROOM_OFFERS: true, // display what a room will offer another
         SPAWN: true, // displays creep name and spawn progress percentage when spawning
         CONTROLLER: false, // displays level, progress, and ticks to downgrade if active
         STORAGE: false, // displays storage contents
         TERMINAL: false, // displays terminal contents
         TRANSACTIONS: false, // displays 2 most recent transactions over room terminal
-        LABS: false, // displays lab energy, mineral, or cooldown
+        LABS: true, // displays lab energy, mineral, or cooldown
         MINERAL: false, // displays mineral amount, or ticks to regen
         SOURCE: false, // displays energy amount, or ticks to regen
         CREEP: false, // draws creep paths
