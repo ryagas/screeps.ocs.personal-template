@@ -16,7 +16,7 @@ let mod = {
     ROOM_VISUALS_ALL: false, // displays visuals in all rooms you have vision in. Only your rooms when false.
     VISUALS: { // if ROOM_VISUALS is enabled, you can select what you want to display - All is a bit much for some people.
         ROOM: true, // displays basic info relative to the room
-        ROOM_GLOBAL: false, // displays basic info relative to your account - requires ROOM: true
+        ROOM_GLOBAL: true, // displays basic info relative to your account - requires ROOM: true
         CPU: false, // display a graph containing CPU used, CPU limit, and bucket
         ROOM_ORDERS: true, // display orders the room creates
         ROOM_OFFERS: true, // display what a room will offer another
