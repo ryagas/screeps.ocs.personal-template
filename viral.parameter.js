@@ -16,16 +16,16 @@ let mod = {
     ROOM_VISUALS_ALL: false, // displays visuals in all rooms you have vision in. Only your rooms when false.
     VISUALS: { // if ROOM_VISUALS is enabled, you can select what you want to display - All is a bit much for some people.
         ROOM: true, // displays basic info relative to the room
-        ROOM_GLOBAL: true, // displays basic info relative to your account - requires ROOM: true
+        ROOM_GLOBAL: false, // displays basic info relative to your account - requires ROOM: true
         CPU: false, // display a graph containing CPU used, CPU limit, and bucket
         ROOM_ORDERS: true, // display orders the room creates
         ROOM_OFFERS: true, // display what a room will offer another
-        SPAWN: true, // displays creep name and spawn progress percentage when spawning
+        SPAWN: false, // displays creep name and spawn progress percentage when spawning
         CONTROLLER: false, // displays level, progress, and ticks to downgrade if active
         STORAGE: false, // displays storage contents
         TERMINAL: false, // displays terminal contents
         TRANSACTIONS: false, // displays 2 most recent transactions over room terminal
-        LABS: true, // displays lab energy, mineral, or cooldown
+        LABS: false, // displays lab energy, mineral, or cooldown
         MINERAL: false, // displays mineral amount, or ticks to regen
         SOURCE: false, // displays energy amount, or ticks to regen
         CREEP: false, // draws creep paths
@@ -46,9 +46,10 @@ let mod = {
         8: 50000
     },
     MAX_STORAGE_MINERAL:20000, // keep a max of each type of minerals in store
+    PROCESS_ORDERS_INTERVAL: 50, // interval to process room orders and run terminalBroker
 
     //MAX_SELL_RANGE: 60,
-    //TERMINAL_ENERGY: 100000,
+    TERMINAL_ENERGY: 5000,
     //MAX_REPAIR_LIMIT: { // Limits how high structures get repaired by towers, regarding RCL
 //        1: 1000,
 //        2: 1000,

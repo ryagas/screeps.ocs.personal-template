@@ -13,6 +13,8 @@ _.forEach(Game.constructionSites, s => s.remove());
 Game.spawns['W47N62'].createCreepBySetup(Creep.setup.upgrader);
 // or
 Game.rooms['W47N62'].spawnQueueLow.push({parts:[MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY],name:'max',setup:'upgrader'});
+// many upgraders!!!
+_.times(5, n => Game.rooms['W49N67'].spawnQueueLow.push({parts: [WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE], name: 'upgrader-550', setup: 'upgrader'}));
 
 // clear spawn queues for a room
 // clear low priority queue
