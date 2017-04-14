@@ -1,6 +1,6 @@
 const setup = {};
 module.exports = {};
-setup._maxCount = function(room){
+setup.maxCount = function(room){
     let count = this.baseOf.viral._maxCount.apply(this,[room]);
     switch( room.name ) {
       case 'W49N67':
