@@ -47,6 +47,7 @@ let mod = {
     },
     MAX_STORAGE_MINERAL:20000, // keep a max of each type of minerals in store
     PROCESS_ORDERS_INTERVAL: 50, // interval to process room orders and run terminalBroker
+    ENERGY_VALUE_CREDITS: 0.05, // assumed energy exchange rate (in credits) to determine best mineral sell offer
 
     //MAX_SELL_RANGE: 60,
     TERMINAL_ENERGY: 5000,
@@ -70,6 +71,15 @@ let mod = {
 //        7: 750000,
 //        8: 300000000
 //    },
+    MIN_SELL_RATIO: {
+        'H': 0.01,
+        'O': 0.01,
+        'U': 0.1,
+        'L': 0.1,
+        'K': 0.1,
+        'Z': 0.1,
+        'X': 0.1
+    },
 //    MAX_FORTIFY_CONTAINER: 50000,
 //    LIMIT_URGENT_REPAIRING: 750, // urgent repair when hits below
 //    GAP_REPAIR_DECAYABLE: 800, // decayables (e.g. roads) only get repaired when that much hits are missing
@@ -120,8 +130,8 @@ let mod = {
     PLAYER_WHITELIST: ['cyberblast','SirLovi','Asku','Kazume','Noxeth','MrDave','Telemac','Xephael','Zoiah','fsck-u','FaceWound','forkmantis','Migaaresno','xAix1999','silentpoots','arguinyano','OokieCookie','OverlordQ','Nibinhilion','Crowsbane','Yew','BogdanBiv','s1akr','Pandabear41','Logmadr','Patrik','novice','Conquest','ofirl','GeorgeBerkeley','TTR','tynstar','K-C','Hoekynl','Sunri5e','AgOrange','distantcam','Lisp','bbdMinimbl','Twill','Logxen','miR','Spedwards','Krazyfuq','Icesory','chobobobo','deft-code','mmmd','DKPlugins','pavelnieks','buckley310','almaravarion','SSH','Perrytheplatypus','Jnesselr','ryagas','xXtheguy52Xx','SEATURTLEKING','DasBrain','C00k1e_93','Currency', 'Bovius','Vykook','shedletsky','Aranatha','Montblanc'],
     // Don't attack. Must be a member of OCS for permanent whitelisting in git repository. But you can change your own copy... Please ask if you are interested in joining OCS :)
     DEFENSE_BLACKLIST: [], // Don't defend those rooms (add room names). Blocks spawning via defense task (will not prevent offensive actions at all)
-//    CRITICAL_BUCKET_LEVEL: 1000, // take action when the bucket drops below this value to prevent the bucket from actually running out
-    CRITICAL_BUCKET_OVERFILL: 400, // Overfill the bucket by this amount before disabling CPU throttle, this can reduce thrashing because all creeps try to act at once
+    CRITICAL_BUCKET_LEVEL: 3000, // take action when the bucket drops below this value to prevent the bucket from actually running out
+    CRITICAL_BUCKET_OVERFILL: 1000, // Overfill the bucket by this amount before disabling CPU throttle, this can reduce thrashing because all creeps try to act at once
     CRITICAL_ROLES: [
         'melee',
         'ranger',
