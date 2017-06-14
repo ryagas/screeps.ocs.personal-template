@@ -21,7 +21,7 @@ _.times(5, n => Game.rooms['W49N67'].spawnQueueLow.push({parts: [WORK, WORK, WOR
 Memory.rooms['<roomName>'].spawnQueueLow = [0];
 // clear medium priority queue
 Memory.rooms['<roomName>'].spawnQueueMedium = [0];
-// clear high priority queue 
+// clear high priority queue
 Memory.rooms['<roomName>'].spawnQueueHigh = [0];
 
 // move Creep
@@ -30,7 +30,7 @@ Game.creeps['<creepName>'].move(RIGHT);
 // force recycle a Creep
 Game.creeps['<creepName>'].data.creepType="recycler";
 
-// To override a module file create a copy of an existing module and name it "custom.<originalModuleName>". Then call this method (without ".js"): 
+// To override a module file create a copy of an existing module and name it "custom.<originalModuleName>". Then call this method (without ".js"):
 getPath('<originalModuleName>', true);
 // To completely re-evaluate all modules:
 delete Memory.modules;
@@ -49,7 +49,10 @@ _.forEach(Memory.rooms, r => delete r.heatmap);
 Game.rooms[<roomName>].placeReactionOrder(<labId>, <resourceId>, <amount>)
 
 //resource management - maintain set amount in container
-Game.rooms[<roomName>].setStore(<structure>, <resource>, <amount>)
+Game.rooms['W45S88'].setStore('593cd1aa370ec0667c591657', RESOURCE_CATALYZED_GHODIUM_ACID, 3000);
 
 //resource management - one off amount in container
 Game.rooms[<roomName>].placeOrder(<structure>, <resource>, <amount>)
+
+//forced  fortifying
+_(Game.creeps).filter({'data':{'creepType':'worker'}, 'room':{'name':'W49S88'}}).map(x=>Creep.action.foritfying.assign(x));
