@@ -7,7 +7,7 @@ Creep.action.recycling.assign(Game.creeps['max-1']);
 _.forEach(Memory.rooms, r => delete r.roadConstructionTrace);
 
 // remove all construction Sites
-_.forEach(Game.constructionSites, s => s.remove());
+_.forEach(Game.rooms['W45S87'].constructionSites, s => s.remove());
 
 // spawn something...
 Game.spawns['W47N62'].createCreepBySetup(Creep.setup.upgrader);
@@ -26,6 +26,9 @@ Memory.rooms['<roomName>'].spawnQueueHigh = [0];
 
 // move Creep
 Game.creeps['<creepName>'].move(RIGHT);
+
+// Assign a creep to a room to travel to
+Creep.action.travelling.assignRoom(creep, flag.pos.roomName)
 
 // force recycle a Creep
 Game.creeps['<creepName>'].data.creepType="recycler";
@@ -72,5 +75,9 @@ JSON.stringify(_.chain(Game.creeps).filter(i=>i.data.creepType==='remoteHauler')
 // Shift all defense flags to a single room
 FlagDir.filter(FLAG_COLOR.defense).map(i=>Game.flags[i.name]).map(i=>i.setPosition(new RoomPosition(i.pos.x, i.pos.y, '<roomName>')))
 
-//remove all flags in a specific roompatrikx [11:31 AM] 
-var flags = _.filter(Game.flags,function(f){return f.pos.roomName == "ROOM_NAME"});  for(let f in flags){flags[f].remove();}
+//remove all flags in a specific room
+var flags = _.filter(Game.flags,function(f){return f.pos.roomName == "W49S84"});  for(let f in flags){flags[f].remove();}
+
+// Force processing of construction flags
+
+room.processConstructionFlags()
