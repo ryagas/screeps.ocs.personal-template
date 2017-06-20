@@ -56,3 +56,21 @@ Game.rooms[<roomName>].placeOrder(<structure>, <resource>, <amount>)
 
 //forced  fortifying
 _(Game.creeps).filter({'data':{'creepType':'worker'}, 'room':{'name':'W49S88'}}).map(x=>Creep.action.foritfying.assign(x));
+// turn one creep into another
+_(Game.creeps).filter({'data':{'creepType':'upgrader'}, 'room':{'name':'W49S88'}}).map(x=>x.data.creepType='worker')
+
+
+// Order all labs to store 2000 energy
+_.values(Game.structures).filter(i=>i.structureType==='lab').map(i=>i.room.setStore(i.id, RESOURCE_ENERGY, 2000));
+
+// Examine the low priority spawn queue in all rooms
+_.chain(Game.spawns).values().map(i=>i.room).unique().filter(i=>i.spawnQueueLow.length).map(i=>[`====${i.name}====>`,i.spawnQueueLow.map(j=>j.name)]).value();
+
+// Show histogram of remoteHauler weight
+JSON.stringify(_.chain(Game.creeps).filter(i=>i.data.creepType==='remoteHauler').groupBy('data.weight').mapValues(i=>i.length))
+
+// Shift all defense flags to a single room
+FlagDir.filter(FLAG_COLOR.defense).map(i=>Game.flags[i.name]).map(i=>i.setPosition(new RoomPosition(i.pos.x, i.pos.y, '<roomName>')))
+
+//remove all flags in a specific roompatrikx [11:31 AM] 
+var flags = _.filter(Game.flags,function(f){return f.pos.roomName == "ROOM_NAME"});  for(let f in flags){flags[f].remove();}

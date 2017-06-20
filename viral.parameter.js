@@ -23,7 +23,7 @@ let mod = {
         ROOM_OFFERS: true, // display what a room will offer another
         SPAWN: true, // displays creep name and spawn progress percentage when spawning
         CONTROLLER: false, // displays level, progress, and ticks to downgrade if active
-        STORAGE: true, // displays storage contents
+        STORAGE: false, // displays storage contents
         TERMINAL: false, // displays terminal contents
         TRANSACTIONS: false, // displays 2 most recent transactions over room terminal
         LABS: false, // displays lab energy, mineral, or cooldown
@@ -48,31 +48,31 @@ let mod = {
     },
     MAX_STORAGE_MINERAL:20000, // keep a max of each type of minerals in store
     PROCESS_ORDERS_INTERVAL: 50, // interval to process room orders and run terminalBroker
-    ENERGY_VALUE_CREDITS: 0.05, // assumed energy exchange rate (in credits) to determine best mineral sell offer
+    ENERGY_VALUE_CREDITS: 0.05, // assumed energy exchange rate (in credits) to determine best mineral sell offerinterval
     USE_UNBUILT_ROADS: true, // enabling this will set the pathing cost of road construction sites to that of roads
 
     //MAX_SELL_RANGE: 60,
     TERMINAL_ENERGY: 5000,
-    //MAX_REPAIR_LIMIT: { // Limits how high structures get repaired by towers, regarding RCL
-//        1: 1000,
-//        2: 1000,
-//        3: 2000,
-//        4: 4000,
-//        5: 8000,
-//        6: 15000,
-//        7: 20000,
-//      8: 40000
-//    },
-//    MAX_FORTIFY_LIMIT: { // Limits how high structures get repaired by creeps, regarding RCL
-//        1: 1000,
-//        2: 1000,
-//        3: 2000,
-//        4: 50000,
-//        5: 100000,
-//        6: 300000,
-//        7: 750000,
-//        8: 300000000
-//    },
+    MAX_REPAIR_LIMIT: { // Limits how high structures get repaired by towers, regarding RCL
+        1: 1000,
+        2: 1000,
+        3: 2000,
+        4: 4000,
+        5: 8000,
+        6: 15000,
+        7: 20000,
+      8: 40000
+    },
+    MAX_FORTIFY_LIMIT: { // Limits how high structures get repaired by creeps, regarding RCL
+        1: 1000,
+        2: 1000,
+        3: 2000,
+        4: 50000,
+        5: 50000,
+        6: 300000,
+        7: 750000,
+        8: 300000000
+    },
     MIN_SELL_RATIO: {
         'H': 0.01,
         'O': 0.01,
@@ -83,15 +83,15 @@ let mod = {
         'X': 0.1
     },
 //    MAX_FORTIFY_CONTAINER: 50000,
-//    LIMIT_URGENT_REPAIRING: 750, // urgent repair when hits below
-//    GAP_REPAIR_DECAYABLE: 800, // decayables (e.g. roads) only get repaired when that much hits are missing
-//    MEMORY_RESYNC_INTERVAL: 500, // interval to reload spawns & towers present in a room
+    LIMIT_URGENT_REPAIRING: 200, // urgent repair when hits below
+    GAP_REPAIR_DECAYABLE: 4000, // decayables (e.g. roads) only get repaired when that much hits are missing
+    MEMORY_RESYNC_INTERVAL: 50, // interval to reload spawns & towers present in a room
 //    TIME_REPORT: 28000, // ticks between room reports
 //    REPORT_MAX_LENGTH: 500,
 //    REPORTS_PER_LOOP: 18,
     SEND_STATISTIC_REPORTS: false, // Set to true to receive room statistics per mail, otherwise set to false.
-    ROAD_CONSTRUCTION_ENABLE: 2, // Set to False to disable automatic road construction, or to a number to enable for owned rooms reaching that RC Level
-//    ROAD_CONSTRUCTION_INTERVAL: 500,
+    ROAD_CONSTRUCTION_ENABLE: false, // Set to False to disable automatic road construction, or to a number to enable for owned rooms reaching that RC Level
+    ROAD_CONSTRUCTION_INTERVAL: 100,
 //    ROAD_CONSTRUCTION_MIN_DEVIATION: 1.2,
 //    ROAD_CONSTRUCTION_ABS_MIN: 3,
     TIME_ZONE: -8, // zone offset in hours (-12 through +12) from UTC
@@ -104,7 +104,7 @@ let mod = {
         'W47N64': Infinity,
         'W47S88': 10000,
         'W48S88': 10000,
-        'W46N67': 10000
+        'W46N67': 10000,
         'W48S85': 10000
     }, // custom room routing cost: e.g. `{ 'W4N4': 11 }`. Affects bestSpawnRoomFor, Creep.Setup calculations, and travel cost predictions. Please call 'delete Memory.routeRange;' whenever you change this property.
 //    TRAVELLING_BORDER_RANGE: 22, // room arrival distance for travelling and routes
@@ -113,9 +113,9 @@ let mod = {
 //    NOTIFICATE_HOSTILES: true, // Log any hostiles - Ignores NOTIFICATE_INTRUDER and NOTIFICATE_INVADER
     COMBAT_CREEPS_RESPECT_RAMPARTS: true, // causes own creeps not to leave through ramparts
 //    COST_MATRIX_VALIDITY: 1000,
-    CONSTRUCTION_PRIORITY: [STRUCTURE_RAMPART, STRUCTURE_SPAWN,STRUCTURE_EXTENSION,STRUCTURE_LINK,STRUCTURE_TERMINAL,STRUCTURE_STORAGE,STRUCTURE_TOWER,STRUCTURE_POWER_SPAWN,STRUCTURE_NUKER,STRUCTURE_OBSERVER,STRUCTURE_ROAD,STRUCTURE_CONTAINER,STRUCTURE_EXTRACTOR,STRUCTURE_LAB,STRUCTURE_WALL],
+    CONSTRUCTION_PRIORITY: [STRUCTURE_SPAWN,STRUCTURE_EXTENSION,STRUCTURE_LINK,STRUCTURE_TERMINAL,STRUCTURE_STORAGE,STRUCTURE_TOWER,STRUCTURE_POWER_SPAWN,STRUCTURE_NUKER,STRUCTURE_OBSERVER,STRUCTURE_ROAD,STRUCTURE_CONTAINER,STRUCTURE_EXTRACTOR,STRUCTURE_LAB,STRUCTURE_WALL,STRUCTURE_RAMPART],
     CONTROLLER_SIGN: true,
-    CONTROLLER_SIGN_MESSAGE: `Territory of ${_.chain(Game.spawns).values().first().get('owner.username').value()}, a Collaborative Coder Coalition member!`,
+    CONTROLLER_SIGN_MESSAGE: `Territory of ${_.chain(Game.spawns).values().first().get('owner.username').value()}, a Collaborative Coder Coalition member! `,
     CONTROLLER_SIGN_UPDATE: true, // Update sign message if user changes CONTROLLER_SIGN_MESSAGE
     MINERS_AUTO_BUILD: true, // miners and remoteMiners will build their own containers if they are missing.
     MINER_WORK_THRESHOLD: 25, // how long to wait before a miner checks for repairs/construction sites nearby again
@@ -134,7 +134,7 @@ let mod = {
     REMOTE_WORKER_MULTIPLIER: 1, // Number of workers spawned per remote mining room.
     PLAYER_WHITELIST: ['SirLovi','Asku','Kazume','Noxeth','MrDave','Telemac','Xephael','Zoiah','fsck-u','FaceWound','forkmantis','Migaaresno','xAix1999','silentpoots','arguinyano','OokieCookie','OverlordQ','Nibinhilion','Crowsbane','Yew','BogdanBiv','s1akr','Pandabear41','Logmadr','Patrik','novice','Conquest','ofirl','GeorgeBerkeley','TTR','tynstar','K-C','Hoekynl','Sunri5e','AgOrange','distantcam','Lisp','bbdMinimbl','Twill','Logxen','miR','Spedwards','Krazyfuq','Icesory','chobobobo','deft-code','mmmd','DKPlugins','pavelnieks','buckley310','almaravarion','SSH','Perrytheplatypus','Jnesselr','ryagas','xXtheguy52Xx','SEATURTLEKING','DasBrain','C00k1e_93','Currency', 'Bovius','Vykook','shedletsky','Aranatha','Montblanc'],
     // Don't attack. Must be a member of OCS for permanent whitelisting in git repository. But you can change your own copy... Please ask if you are interested in joining OCS :)
-    DEFENSE_BLACKLIST: [], // Don't defend those rooms (add room names). Blocks spawning via defense task (will not prevent offensive actions at all)
+    DEFENSE_BLACKLIST: ['W49S84', 'W48S86'], // Don't defend those rooms (add room names). Blocks spawning via defense task (will not prevent offensive actions at all)
     CRITICAL_BUCKET_LEVEL: 1000, // take action when the bucket drops below this value to prevent the bucket from actually running out
     CRITICAL_BUCKET_OVERFILL: 1000, // Overfill the bucket by this amount before disabling CPU throttle, this can reduce thrashing because all creeps try to act at once
     CRITICAL_ROLES: [
@@ -150,5 +150,7 @@ let mod = {
 //    AUTO_POWER_MINING: false, //set to false to disable power mining (recomended until 1-2 RCL8+ rooms)
 //    MAX_AUTO_POWER_MINING_FLAGS: 1,
 //    POWER_MINE_LOG: true, //displays power mining info in console
+    REMOVE_CONSTRUCTION_FLAG: false, // if false, flag will remain. This is good if a structure decays, it can rebuild
+
 };
 module.exports = mod;
