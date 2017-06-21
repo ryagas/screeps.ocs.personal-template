@@ -28,10 +28,10 @@ Memory.rooms['<roomName>'].spawnQueueHigh = [0];
 Game.creeps['<creepName>'].move(RIGHT);
 
 // Assign a creep to a room to travel to
-Creep.action.travelling.assignRoom(Game.creeps['pioneer-Flag57-1'], Game.flags['Flag57'].pos.roomName)
+Creep.action.travelling.assignRoom(Game.creeps['pioneer-W54S82-1'], Game.flags['Flag78'].pos.roomName)
 
 // force recycle a Creep
-Game.creeps['<creepName>'].data.creepType="recycler";
+Game.creeps['pioneer-Flag2-1'].data.creepType="recycler";
 
 // To override a module file create a copy of an existing module and name it "custom.<originalModuleName>". Then call this method (without ".js"):
 getPath('<originalModuleName>', true);
@@ -60,7 +60,8 @@ Game.rooms[<roomName>].placeOrder(<structure>, <resource>, <amount>)
 //forced  fortifying
 _(Game.creeps).filter({'data':{'creepType':'worker'}, 'room':{'name':'W49S88'}}).map(x=>Creep.action.foritfying.assign(x));
 // turn one creep into another
-_(Game.creeps).filter({'data':{'creepType':'upgrader'}, 'room':{'name':'W49S88'}}).map(x=>x.data.creepType='worker')
+_(Game.creeps).filter({'data':{'creepType':'pioneer'}, 'room':{'name':'W48S86'}}).map(x=>x.data.creepType='upgrader')
+_(Game.creeps).filter({'data':{'creepType':'worker'}, 'room':{'name':'W48S86'}}).map(x=>Creep.action.upgrading.assign(x));
 
 
 // Order all labs to store 2000 energy
@@ -77,6 +78,11 @@ FlagDir.filter(FLAG_COLOR.defense).map(i=>Game.flags[i.name]).map(i=>i.setPositi
 
 //remove all flags in a specific room
 var flags = _.filter(Game.flags,function(f){return f.pos.roomName == "W45S87"});  for(let f in flags){flags[f].remove();}
+
+// set a creep to a different flag to go to
+Game.creeps['CREEP_NAME'].data.destiny.targetName = 'Flag78'
+*AND*
+Game.creeps['CREEP_NAME'].data.destiny.flagName = 'Flag78'
 
 // Force processing of construction flags
 
