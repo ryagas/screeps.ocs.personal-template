@@ -61,7 +61,7 @@ let mod = {
         5: 8000,
         6: 15000,
         7: 20000,
-        8: 40000
+        processConstructionFlags()8: 40000
     },
     MAX_FORTIFY_LIMIT: { // Limits how high structures get repaired by creeps, regarding RCL
         1: 1000,
@@ -85,7 +85,7 @@ let mod = {
 //    MAX_FORTIFY_CONTAINER: 50000,
     LIMIT_URGENT_REPAIRING: 200, // urgent repair when hits below
     GAP_REPAIR_DECAYABLE: 4000, // decayables (e.g. roads) only get repaired when that much hits are missing
-    MEMORY_RESYNC_INTERVAL: 50, // interval to reload spawns & towers present in a room
+    MEMORY_RESYNC_INTERVAL: 100, // interval to reload spawns & towers present in a room
 //    TIME_REPORT: 28000, // ticks between room reports
 //    REPORT_MAX_LENGTH: 500,
 //    REPORTS_PER_LOOP: 18,
