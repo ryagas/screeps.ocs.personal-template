@@ -61,7 +61,7 @@ let mod = {
         5: 8000,
         6: 15000,
         7: 20000,
-      8: 40000
+        8: 40000
     },
     MAX_FORTIFY_LIMIT: { // Limits how high structures get repaired by creeps, regarding RCL
         1: 1000,

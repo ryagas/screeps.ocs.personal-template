@@ -28,7 +28,7 @@ Memory.rooms['<roomName>'].spawnQueueHigh = [0];
 Game.creeps['<creepName>'].move(RIGHT);
 
 // Assign a creep to a room to travel to
-Creep.action.travelling.assignRoom(creep, flag.pos.roomName)
+Creep.action.travelling.assignRoom(Game.creeps['pioneer-Flag57-1'], Game.flags['Flag57'].pos.roomName)
 
 // force recycle a Creep
 Game.creeps['<creepName>'].data.creepType="recycler";
@@ -76,7 +76,7 @@ JSON.stringify(_.chain(Game.creeps).filter(i=>i.data.creepType==='remoteHauler')
 FlagDir.filter(FLAG_COLOR.defense).map(i=>Game.flags[i.name]).map(i=>i.setPosition(new RoomPosition(i.pos.x, i.pos.y, '<roomName>')))
 
 //remove all flags in a specific room
-var flags = _.filter(Game.flags,function(f){return f.pos.roomName == "W49S84"});  for(let f in flags){flags[f].remove();}
+var flags = _.filter(Game.flags,function(f){return f.pos.roomName == "W45S87"});  for(let f in flags){flags[f].remove();}
 
 // Force processing of construction flags
 
