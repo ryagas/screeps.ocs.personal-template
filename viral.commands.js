@@ -10,11 +10,11 @@ _.forEach(Memory.rooms, r => delete r.roadConstructionTrace);
 _.forEach(Game.rooms['W45S87'].constructionSites, s => s.remove());
 
 // spawn something...
-Game.spawns['W47N62'].createCreepBySetup(Creep.setup.upgrader);
+Game.spawns['Spawn2'].createCreepBySetup(Creep.setup.pioneer);
 // or
 Game.rooms['W47N62'].spawnQueueLow.push({parts:[MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY],name:'max',setup:'upgrader'});
 // or
-Task.forceSpawn(Task.pioneer.creep.pioneer, {targetRoom:'ROOM_NAME', allowTargetRoom:true, explicit:'ROOM_NAME'}, Game.flags['WhateverFlagYouUsed'])
+Task.forceSpawn(Task.pioneer.creep.pioneer, {targetRoom:'W48S86', allowTargetRoom:true, explicit:'W48S86'}, Game.flags['Flag2'])
 // many upgraders!!!
 _.times(5, n => Game.rooms['W49N67'].spawnQueueLow.push({parts: [WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE], name: 'upgrader-550', setup: 'upgrader'}));
 
@@ -30,7 +30,7 @@ Memory.rooms['<roomName>'].spawnQueueHigh = [0];
 Game.creeps['<creepName>'].move(RIGHT);
 
 // Assign a creep to a room to travel to
-Creep.action.travelling.assignRoom(Game.creeps['worker-400-2'], Game.flags['Flag2'].pos.roomName)
+Creep.action.travelling.assignRoom(Game.creeps['pioneer-Flag3-1'], Game.flags['Flag2'].pos.roomName)
 
 // force recycle a Creep
 Game.creeps['pioneer-Flag2-1'].data.creepType="recycler";
@@ -63,7 +63,8 @@ Game.rooms[<roomName>].placeOrder(<structure>, <resource>, <amount>)
 _(Game.creeps).filter({'data':{'creepType':'worker'}, 'room':{'name':'W49S88'}}).map(x=>Creep.action.foritfying.assign(x));
 // turn one creep into another
 _(Game.creeps).filter({'data':{'creepType':'remoteMiner'}}).map(x=>x.data.creepType='recycler')
-_(Game.creeps).filter({'data':{'creepType':'worker'}, 'room':{'name':'W48S86'}}).map(x=>Creep.action.upgrading.assign(x));
+// assign actions to certain creeps
+_(Game.creeps).filter({'data':{'creepType':'miner'}, 'room':{'name':'W52S82'}}).map(x=>Creep.action.upgrading.assign(x));
 
 
 // Order all labs to store 2000 energy
@@ -79,12 +80,12 @@ JSON.stringify(_.chain(Game.creeps).filter(i=>i.data.creepType==='remoteHauler')
 FlagDir.filter(FLAG_COLOR.defense).map(i=>Game.flags[i.name]).map(i=>i.setPosition(new RoomPosition(i.pos.x, i.pos.y, '<roomName>')))
 
 //remove all flags in a specific room
-var flags = _.filter(Game.flags,function(f){return f.pos.roomName == "W45S87"});  for(let f in flags){flags[f].remove();}
+var flags = _.filter(Game.flags,function(f){return f.pos.roomName == "W54S82"});  for(let f in flags){flags[f].remove();}
 
 // set a creep to a different flag to go to
-Game.creeps['worker-400-1'].data.destiny.targetName = 'Flag3'
+Game.creeps['CREEP_NAME'].data.destiny.targetName = 'Flag2'
 *AND*
-Game.creeps['worker-400-1'].data.destiny.flagName = 'Flag3'
+Game.creeps['CREEP_NAME'].data.destiny.flagName = 'Flag2'
 
 // Force processing of construction flags
 
