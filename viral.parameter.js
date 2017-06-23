@@ -101,11 +101,7 @@ let mod = {
     ROUTE_ROOM_COST: {
         'W47N65': Infinity,
         'W48N64': Infinity,
-        'W47N64': Infinity,
-        'W47S88': 10000,
-        'W48S88': 10000,
-        'W46N67': 10000,
-        'W48S85': 10000
+        'W47N64': Infinity
     }, // custom room routing cost: e.g. `{ 'W4N4': 11 }`. Affects bestSpawnRoomFor, Creep.Setup calculations, and travel cost predictions. Please call 'delete Memory.routeRange;' whenever you change this property.
 //    TRAVELLING_BORDER_RANGE: 22, // room arrival distance for travelling and routes
 //    NOTIFICATE_INVADER: false, // Also log common 'Invader' hostiles
@@ -118,7 +114,7 @@ let mod = {
     CONTROLLER_SIGN_MESSAGE: `Territory of ${_.chain(Game.spawns).values().first().get('owner.username').value()}, a Collaborative Coder Coalition member! `,
     CONTROLLER_SIGN_UPDATE: true, // Update sign message if user changes CONTROLLER_SIGN_MESSAGE
     MINERS_AUTO_BUILD: true, // miners and remoteMiners will build their own containers if they are missing.
-    MINER_WORK_THRESHOLD: 10, // how long to wait before a miner checks for repairs/construction sites nearby again
+    MINER_WORK_THRESHOLD: 40, // how long to wait before a miner checks for repairs/construction sites nearby again
 //    REMOTE_HAULER_MULTIPLIER: 1, // Max number of haulers spawned per source in a remote mining room.
     REMOTE_HAULER_CHECK_INTERVAL: 4, // how many ticks before we check to see if new haulers need spawninig?
 //    REMOTE_RESERVE_HAUL_CAPACITY: 0.1, // Percent of allocated haul capacity before sending reservers.
