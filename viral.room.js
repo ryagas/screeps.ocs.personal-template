@@ -1323,4 +1323,5 @@ mod.shouldRepair = function(room, structure) {
         // not flagged for removal
         ( !FlagDir.list.some(f => f.roomName == structure.pos.roomName && f.color == COLOR_ORANGE && f.x == structure.pos.x && f.y == structure.pos.y) )
     );
+
 }

@@ -98,18 +98,14 @@ let mod = {
     USE_SUMMERTIME: true, // Please define isSummerTime in global.js to suit to your local summertime rules
 //    SPAWN_DEFENSE_ON_ATTACK: true, // This will attempt to store enough to have a defense and spawn troops when invaded.
     MANAGED_CONTAINER_TRIGGER: 0.30, // managed containers get filled below this relative energy amount and emptied when above 1-this value
-    ROUTE_ROOM_COST: {
-        'W47N65': Infinity,
-        'W48N64': Infinity,
-        'W47N64': Infinity
-    }, // custom room routing cost: e.g. `{ 'W4N4': 11 }`. Affects bestSpawnRoomFor, Creep.Setup calculations, and travel cost predictions. Please call 'delete Memory.routeRange;' whenever you change this property.
+    ROUTE_ROOM_COST: {}, // custom room routing cost: e.g. `{ 'W4N4': 11 }`. Affects bestSpawnRoomFor, Creep.Setup calculations, and travel cost predictions. Please call 'delete Memory.routeRange;' whenever you change this property.
 //    TRAVELLING_BORDER_RANGE: 22, // room arrival distance for travelling and routes
 //    NOTIFICATE_INVADER: false, // Also log common 'Invader' hostiles
 //    NOTIFICATE_INTRUDER: true, // Log any hostiles in your rooms
 //    NOTIFICATE_HOSTILES: true, // Log any hostiles - Ignores NOTIFICATE_INTRUDER and NOTIFICATE_INVADER
     COMBAT_CREEPS_RESPECT_RAMPARTS: true, // causes own creeps not to leave through ramparts
-//    COST_MATRIX_VALIDITY: 1000,
-    CONSTRUCTION_PRIORITY: [STRUCTURE_EXTENSION,STRUCTURE_TOWER,STRUCTURE_SPAWN,STRUCTURE_WALL,STRUCTURE_RAMPART,STRUCTURE_LINK,STRUCTURE_TERMINAL,STRUCTURE_STORAGE,STRUCTURE_POWER_SPAWN,STRUCTURE_NUKER,STRUCTURE_OBSERVER,STRUCTURE_ROAD,STRUCTURE_CONTAINER,STRUCTURE_EXTRACTOR,STRUCTURE_LAB],
+    COST_MATRIX_VALIDITY: 10000,
+    CONSTRUCTION_PRIORITY: [STRUCTURE_SPAWN,STRUCTURE_EXTENSION,STRUCTURE_TOWER,STRUCTURE_SPAWN,STRUCTURE_WALL,STRUCTURE_RAMPART,STRUCTURE_LINK,STRUCTURE_TERMINAL,STRUCTURE_STORAGE,STRUCTURE_POWER_SPAWN,STRUCTURE_NUKER,STRUCTURE_OBSERVER,STRUCTURE_ROAD,STRUCTURE_CONTAINER,STRUCTURE_EXTRACTOR,STRUCTURE_LAB],
     CONTROLLER_SIGN: true,
     CONTROLLER_SIGN_MESSAGE: `Territory of ${_.chain(Game.spawns).values().first().get('owner.username').value()}, a Collaborative Coder Coalition member! `,
     CONTROLLER_SIGN_UPDATE: true, // Update sign message if user changes CONTROLLER_SIGN_MESSAGE
@@ -132,7 +128,7 @@ let mod = {
     // Don't attack. Must be a member of OCS for permanent whitelisting in git repository. But you can change your own copy... Please ask if you are interested in joining OCS :)
     DEFENSE_BLACKLIST: [], // Don't defend those rooms (add room names). Blocks spawning via defense task (will not prevent offensive actions at all)
     CRITICAL_BUCKET_LEVEL: 1000, // take action when the bucket drops below this value to prevent the bucket from actually running out
-    CRITICAL_BUCKET_OVERFILL: 1000, // Overfill the bucket by this amount before disabling CPU throttle, this can reduce thrashing because all creeps try to act at once
+    CRITICAL_BUCKET_OVERFILL: 2000, // Overfill the bucket by this amount before disabling CPU throttle, this can reduce thrashing because all creeps try to act at once
     CRITICAL_ROLES: [
         'melee',
         'ranger',

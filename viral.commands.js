@@ -30,7 +30,7 @@ Memory.rooms['<roomName>'].spawnQueueHigh = [0];
 Game.creeps['<creepName>'].move(RIGHT);
 
 // Assign a creep to a room to travel to
-Creep.action.travelling.assignRoom(Game.creeps['pioneer-Flag3-1'], Game.flags['Flag2'].pos.roomName)
+Creep.action.travelling.assignRoom(Game.creeps['worker-1600-1'], Game.flags['Flag137'].pos.roomName)
 
 // force recycle a Creep
 Game.creeps['pioneer-Flag2-1'].data.creepType="recycler";
