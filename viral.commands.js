@@ -90,3 +90,7 @@ Game.creeps['CREEP_NAME'].data.destiny.flagName = 'Flag2'
 // Force processing of construction flags
 
 room.processConstructionFlags()
+
+// signing a controller manually:
+Game.creeps['guard-Flag110-2'].signController(Game.getObjectById('58dbc3b58283ff5308a3dfbd'), 'This room has been inspected by Chuck Norris. He did not approve.');
+
