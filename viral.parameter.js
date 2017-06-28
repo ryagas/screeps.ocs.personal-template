@@ -23,8 +23,8 @@ let mod = {
         ROOM_OFFERS: true, // display what a room will offer another
         SPAWN: true, // displays creep name and spawn progress percentage when spawning
         CONTROLLER: false, // displays level, progress, and ticks to downgrade if active
-        STORAGE: false, // displays storage contents
-        TERMINAL: false, // displays terminal contents
+        STORAGE: true, // displays storage contents
+        TERMINAL: true, // displays terminal contents
         TRANSACTIONS: false, // displays 2 most recent transactions over room terminal
         LABS: false, // displays lab energy, mineral, or cooldown
         MINERAL: false, // displays mineral amount, or ticks to regen
@@ -41,7 +41,7 @@ let mod = {
         2: 1000,
         3: 1000,
         4: 1000,
-        5: 5000,
+        5: 3500,
         6: 10000,
         7: 30000,
         8: 50000
@@ -68,7 +68,7 @@ let mod = {
         2: 1000,
         3: 2000,
         4: 50000,
-        5: 50000,
+        5: 100000,
         6: 300000,
         7: 750000,
         8: 300000000
@@ -90,28 +90,40 @@ let mod = {
 //    REPORT_MAX_LENGTH: 500,
 //    REPORTS_PER_LOOP: 18,
     SEND_STATISTIC_REPORTS: false, // Set to true to receive room statistics per mail, otherwise set to false.
-    ROAD_CONSTRUCTION_ENABLE: false, // Set to False to disable automatic road construction, or to a number to enable for owned rooms reaching that RC Level
+    ROAD_CONSTRUCTION_ENABLE: 5, // Set to False to disable automatic road construction, or to a number to enable for owned rooms reaching that RC Level
     ROAD_CONSTRUCTION_INTERVAL: 100,
 //    ROAD_CONSTRUCTION_MIN_DEVIATION: 1.2,
 //    ROAD_CONSTRUCTION_ABS_MIN: 3,
     TIME_ZONE: -8, // zone offset in hours (-12 through +12) from UTC
     USE_SUMMERTIME: true, // Please define isSummerTime in global.js to suit to your local summertime rules
-//    SPAWN_DEFENSE_ON_ATTACK: true, // This will attempt to store enough to have a defense and spawn troops when invaded.
+    SPAWN_DEFENSE_ON_ATTACK: true, // This will attempt to store enough to have a defense and spawn troops when invaded.
     MANAGED_CONTAINER_TRIGGER: 0.30, // managed containers get filled below this relative energy amount and emptied when above 1-this value
-    ROUTE_ROOM_COST: {}, // custom room routing cost: e.g. `{ 'W4N4': 11 }`. Affects bestSpawnRoomFor, Creep.Setup calculations, and travel cost predictions. Please call 'delete Memory.routeRange;' whenever you change this property.
+    ROUTE_ROOM_COST: {// custom room routing cost: e.g. `{ 'W4N4': 11 }`. Affects bestSpawnRoomFor, Creep.Setup calculations, and travel cost predictions. Please call 'delete Memory.routeRange;' whenever you change this property.
+        'W49S84' : 1000000,
+        'W55S86': 1000000}, 
 //    TRAVELLING_BORDER_RANGE: 22, // room arrival distance for travelling and routes
 //    NOTIFICATE_INVADER: false, // Also log common 'Invader' hostiles
 //    NOTIFICATE_INTRUDER: true, // Log any hostiles in your rooms
 //    NOTIFICATE_HOSTILES: true, // Log any hostiles - Ignores NOTIFICATE_INTRUDER and NOTIFICATE_INVADER
     COMBAT_CREEPS_RESPECT_RAMPARTS: true, // causes own creeps not to leave through ramparts
     COST_MATRIX_VALIDITY: 10000,
-    CONSTRUCTION_PRIORITY: [STRUCTURE_SPAWN,STRUCTURE_EXTENSION,STRUCTURE_TOWER,STRUCTURE_SPAWN,STRUCTURE_WALL,STRUCTURE_RAMPART,STRUCTURE_LINK,STRUCTURE_TERMINAL,STRUCTURE_STORAGE,STRUCTURE_POWER_SPAWN,STRUCTURE_NUKER,STRUCTURE_OBSERVER,STRUCTURE_ROAD,STRUCTURE_CONTAINER,STRUCTURE_EXTRACTOR,STRUCTURE_LAB],
+    CONSTRUCTION_PRIORITY: [STRUCTURE_SPAWN,STRUCTURE_ROAD,STRUCTURE_STORAGE,STRUCTURE_TERMINAL,STRUCTURE_EXTENSION,STRUCTURE_LINK,STRUCTURE_LAB,STRUCTURE_TOWER,STRUCTURE_WALL,STRUCTURE_RAMPART,STRUCTURE_POWER_SPAWN,STRUCTURE_NUKER,STRUCTURE_OBSERVER,STRUCTURE_CONTAINER,STRUCTURE_EXTRACTOR],
     CONTROLLER_SIGN: true,
     CONTROLLER_SIGN_MESSAGE: `Territory of ${_.chain(Game.spawns).values().first().get('owner.username').value()}, a Collaborative Coder Coalition member! `,
     CONTROLLER_SIGN_UPDATE: true, // Update sign message if user changes CONTROLLER_SIGN_MESSAGE
     MINERS_AUTO_BUILD: true, // miners and remoteMiners will build their own containers if they are missing.
     MINER_WORK_THRESHOLD: 40, // how long to wait before a miner checks for repairs/construction sites nearby again
-//    REMOTE_HAULER_MULTIPLIER: 1, // Max number of haulers spawned per source in a remote mining room.
+    REMOTE_HAULER: {
+        ALLOW_OVER_CAPACITY: 2450, // Hauler capacity rounds up by MIN_WEIGHT, or this number value.
+        DRIVE_BY_BUILD_ALL: false, // If REMOTE_HAULER.DRIVE_BY_BUILDING is enabled then this option will allow remote haulers will drive-by-build any of your structures.
+        DRIVE_BY_BUILD_RANGE: 1, // A creep's max build distance is 3 but cpu can be saved by dropping the search distance to 1.
+        DRIVE_BY_BUILDING: true, // Allows remote haulers to build roads and containers. Consider setting REMOTE_WORKER_MULTIPLIER to 0.
+        DRIVE_BY_REPAIR_RANGE: 1, // range that remote haulers should search when trying to repair and move
+        MIN_LOAD: 0.75, // Haulers will return home as long as their ratio of carrying/capacity is above this amount.
+        MIN_WEIGHT: 800, // Small haulers are a CPU drain.
+        MULTIPLIER: 1, // Max number of haulers spawned per source in a remote mining room.
+        REHOME: true, // May haulers choose closer storage for delivery?
+    },
     REMOTE_HAULER_CHECK_INTERVAL: 4, // how many ticks before we check to see if new haulers need spawninig?
 //    REMOTE_RESERVE_HAUL_CAPACITY: 0.1, // Percent of allocated haul capacity before sending reservers.
     REMOTE_HAULER_REHOME: true, // May haulers choose closer storage for delivery?
@@ -123,10 +135,10 @@ let mod = {
     REMOTE_HAULER_DRIVE_BY_BUILD_ALL: false, // If REMOTE_HAULER_DRIVE_BY_BUILDING is enabled then this option will allow remote haulers will drive-by-build any of your structures.
     PIONEER_UNOWNED: true, // True: pioneers may attempt to work in unowned rooms.
     DRIVE_BY_REPAIR_RANGE: 1, // range that creeps should search when trying to repair and move
-    REMOTE_WORKER_MULTIPLIER: 1, // Number of workers spawned per remote mining room.
+    REMOTE_WORKER_MULTIPLIER: 0, // Number of workers spawned per remote mining room.
     PLAYER_WHITELIST: ['SirLovi','Asku','Kazume','Noxeth','MrDave','Telemac','Xephael','Zoiah','fsck-u','FaceWound','forkmantis','Migaaresno','xAix1999','silentpoots','arguinyano','OokieCookie','OverlordQ','Nibinhilion','Crowsbane','Yew','BogdanBiv','s1akr','Pandabear41','Logmadr','Patrik','novice','Conquest','ofirl','GeorgeBerkeley','TTR','tynstar','K-C','Hoekynl','Sunri5e','AgOrange','distantcam','Lisp','bbdMinimbl','Twill','Logxen','miR','Spedwards','Krazyfuq','Icesory','chobobobo','deft-code','mmmd','DKPlugins','pavelnieks','buckley310','almaravarion','SSH','Perrytheplatypus','Jnesselr','ryagas','xXtheguy52Xx','SEATURTLEKING','DasBrain','C00k1e_93','Currency', 'Bovius','Vykook','shedletsky','Aranatha','Montblanc', 'Davaned'],
     // Don't attack. Must be a member of OCS for permanent whitelisting in git repository. But you can change your own copy... Please ask if you are interested in joining OCS :)
-    DEFENSE_BLACKLIST: [], // Don't defend those rooms (add room names). Blocks spawning via defense task (will not prevent offensive actions at all)
+    DEFENSE_BLACKLIST: ['W49S84','W48S87', 'W45S87', 'W51S83'], // Don't defend those rooms (add room names). Blocks spawning via defense task (will not prevent offensive actions at all)
     CRITICAL_BUCKET_LEVEL: 1000, // take action when the bucket drops below this value to prevent the bucket from actually running out
     CRITICAL_BUCKET_OVERFILL: 2000, // Overfill the bucket by this amount before disabling CPU throttle, this can reduce thrashing because all creeps try to act at once
     CRITICAL_ROLES: [

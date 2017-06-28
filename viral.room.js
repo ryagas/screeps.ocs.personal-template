@@ -927,7 +927,7 @@ mod.extend = function(){
         this.structures.my                                  // Iterate over all room structures
             .filter(s => s instanceof StructureRampart)     // Filter out structures not a rampart
             .filter(rampart => rampart.isPublic)            // Filter out any rampart already closed
-//            .forEach(rampart => rampart.setPublic(false));  // Close any public rampart
+         //   .forEach(rampart => rampart.setPublic(false));  // Close any public rampart
 
         // Open Ramparts
         this.allCreeps                                          // Iterate over all creeps
@@ -1323,5 +1323,4 @@ mod.shouldRepair = function(room, structure) {
         // not flagged for removal
         ( !FlagDir.list.some(f => f.roomName == structure.pos.roomName && f.color == COLOR_ORANGE && f.x == structure.pos.x && f.y == structure.pos.y) )
     );
-
 }

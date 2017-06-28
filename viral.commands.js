@@ -16,7 +16,7 @@ Game.rooms['W47N62'].spawnQueueLow.push({parts:[MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WO
 // or
 Task.forceSpawn(Task.pioneer.creep.pioneer, {targetRoom:'W48S86', allowTargetRoom:true, explicit:'W48S86'}, Game.flags['Flag2'])
 // many upgraders!!!
-_.times(5, n => Game.rooms['W49N67'].spawnQueueLow.push({parts: [WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE], name: 'upgrader-550', setup: 'upgrader'}));
+_.times(5, n => Game.rooms['W54S82'].spawnQueueLow.push({parts: [WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE], name: 'buildStorage', setup: 'work'}));
 
 // clear spawn queues for a room
 // clear low priority queue
@@ -51,18 +51,18 @@ _.forEach(Memory.rooms, r => delete r.heatmap);
 
 // https://github.com/ScreepsOCS/screeps.behaviour-action-pattern/wiki/Resource-Management
 //resource management  - stat labs
-Game.rooms[<roomName>].placeReactionOrder(<labId>, <resourceId>, <amount>)
+Game.rooms['roomName'].placeReactionOrder('labId', 'resourceId', amount);
 
 //resource management - maintain set amount in container
 Game.rooms['W45S88'].setStore('593cd1aa370ec0667c591657', RESOURCE_CATALYZED_GHODIUM_ACID, 3000);
 
 //resource management - one off amount in container
-Game.rooms[<roomName>].placeOrder(<structure>, <resource>, <amount>)
+Game.rooms['roomName'].placeOrder('structureID', RESOURCE_TYPE, amount)
 
 //forced  fortifying
 _(Game.creeps).filter({'data':{'creepType':'worker'}, 'room':{'name':'W49S88'}}).map(x=>Creep.action.foritfying.assign(x));
 // turn one creep into another
-_(Game.creeps).filter({'data':{'creepType':'remoteMiner'}}).map(x=>x.data.creepType='recycler')
+_(Game.creeps).filter({'data':{'creepType':'remoteWorker'}}).map(x=>x.data.creepType='recycler')
 // assign actions to certain creeps
 _(Game.creeps).filter({'data':{'creepType':'miner'}, 'room':{'name':'W52S82'}}).map(x=>Creep.action.upgrading.assign(x));
 
