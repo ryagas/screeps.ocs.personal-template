@@ -8,7 +8,7 @@ let mod = {
         FLUSH_LIMIT: 5, // profile warning levels
         REGISTER_LIMIT: 2, // profile warning levels
     },
-    GRAFANA: false, // track for Grafana data
+    GRAFANA: true, // track for Grafana data
     GRAFANA_INTERVAL: 3, // loops between Grafana tracking - No lower than 3.
     CENSUS_ANNOUNCEMENTS: true, // log birth and death
     SELL_NOTIFICATION: true, // send mail when selling minerals
@@ -100,6 +100,7 @@ let mod = {
     MANAGED_CONTAINER_TRIGGER: 0.30, // managed containers get filled below this relative energy amount and emptied when above 1-this value
     ROUTE_ROOM_COST: {// custom room routing cost: e.g. `{ 'W4N4': 11 }`. Affects bestSpawnRoomFor, Creep.Setup calculations, and travel cost predictions. Please call 'delete Memory.routeRange;' whenever you change this property.
         'W49S84' : 1000000,
+        'W48S88' : 1000000,
         'W55S86': 1000000}, 
 //    TRAVELLING_BORDER_RANGE: 22, // room arrival distance for travelling and routes
 //    NOTIFICATE_INVADER: false, // Also log common 'Invader' hostiles
@@ -107,7 +108,7 @@ let mod = {
 //    NOTIFICATE_HOSTILES: true, // Log any hostiles - Ignores NOTIFICATE_INTRUDER and NOTIFICATE_INVADER
     COMBAT_CREEPS_RESPECT_RAMPARTS: true, // causes own creeps not to leave through ramparts
     COST_MATRIX_VALIDITY: 10000,
-    CONSTRUCTION_PRIORITY: [STRUCTURE_SPAWN,STRUCTURE_ROAD,STRUCTURE_STORAGE,STRUCTURE_TERMINAL,STRUCTURE_EXTENSION,STRUCTURE_LINK,STRUCTURE_LAB,STRUCTURE_TOWER,STRUCTURE_WALL,STRUCTURE_RAMPART,STRUCTURE_POWER_SPAWN,STRUCTURE_NUKER,STRUCTURE_OBSERVER,STRUCTURE_CONTAINER,STRUCTURE_EXTRACTOR],
+    CONSTRUCTION_PRIORITY: [STRUCTURE_SPAWN,STRUCTURE_EXTENSION,STRUCTURE_TOWER,STRUCTURE_STORAGE,STRUCTURE_ROAD,STRUCTURE_TERMINAL,STRUCTURE_LINK,STRUCTURE_LAB,STRUCTURE_WALL,STRUCTURE_RAMPART,STRUCTURE_POWER_SPAWN,STRUCTURE_NUKER,STRUCTURE_OBSERVER,STRUCTURE_CONTAINER,STRUCTURE_EXTRACTOR],
     CONTROLLER_SIGN: true,
     CONTROLLER_SIGN_MESSAGE: `Territory of ${_.chain(Game.spawns).values().first().get('owner.username').value()}, a Collaborative Coder Coalition member! `,
     CONTROLLER_SIGN_UPDATE: true, // Update sign message if user changes CONTROLLER_SIGN_MESSAGE
@@ -136,9 +137,9 @@ let mod = {
     PIONEER_UNOWNED: true, // True: pioneers may attempt to work in unowned rooms.
     DRIVE_BY_REPAIR_RANGE: 1, // range that creeps should search when trying to repair and move
     REMOTE_WORKER_MULTIPLIER: 1, // Number of workers spawned per remote mining room.
-    PLAYER_WHITELIST: ['SirLovi','Asku','Kazume','Noxeth','MrDave','Telemac','Xephael','Zoiah','fsck-u','FaceWound','forkmantis','Migaaresno','xAix1999','silentpoots','arguinyano','OokieCookie','OverlordQ','Nibinhilion','Crowsbane','Yew','BogdanBiv','s1akr','Pandabear41','Logmadr','Patrik','novice','Conquest','ofirl','GeorgeBerkeley','TTR','tynstar','K-C','Hoekynl','Sunri5e','AgOrange','distantcam','Lisp','bbdMinimbl','Twill','Logxen','miR','Spedwards','Krazyfuq','Icesory','chobobobo','deft-code','mmmd','DKPlugins','pavelnieks','buckley310','almaravarion','SSH','Perrytheplatypus','Jnesselr','ryagas','xXtheguy52Xx','SEATURTLEKING','DasBrain','C00k1e_93','Currency', 'Bovius','Vykook','shedletsky','Aranatha','Montblanc', 'Davaned'],
+    PLAYER_WHITELIST: ['SirLovi','Asku','Kazume','Noxeth','MrDave','Telemac','Xephael','Zoiah','fsck-u','FaceWound','forkmantis','Migaaresno','xAix1999','silentpoots','arguinyano','OokieCookie','OverlordQ','Nibinhilion','Crowsbane','Yew','BogdanBiv','s1akr','Pandabear41','Logmadr','Patrik','novice','Conquest','ofirl','GeorgeBerkeley','TTR','tynstar','K-C','Hoekynl','Sunri5e','AgOrange','distantcam','Lisp','bbdMinimbl','Twill','Logxen','miR','Spedwards','Krazyfuq','Icesory','chobobobo','deft-code','mmmd','DKPlugins','pavelnieks','buckley310','almaravarion','SSH','Perrytheplatypus','Jnesselr','ryagas','xXtheguy52Xx','SEATURTLEKING','DasBrain','C00k1e_93','Currency', 'Bovius','Vykook','shedletsky','Aranatha','Montblanc', 'Davaned', 'OrangeXP'],
     // Don't attack. Must be a member of OCS for permanent whitelisting in git repository. But you can change your own copy... Please ask if you are interested in joining OCS :)
-    DEFENSE_BLACKLIST: ['W49S84','W48S87', 'W45S87', 'W51S83'], // Don't defend those rooms (add room names). Blocks spawning via defense task (will not prevent offensive actions at all)
+    DEFENSE_BLACKLIST: ['W49S84','W48S87', 'W45S87', 'W51S83', 'W48S91'], // Don't defend those rooms (add room names). Blocks spawning via defense task (will not prevent offensive actions at all)
     CRITICAL_BUCKET_LEVEL: 1000, // take action when the bucket drops below this value to prevent the bucket from actually running out
     CRITICAL_BUCKET_OVERFILL: 2000, // Overfill the bucket by this amount before disabling CPU throttle, this can reduce thrashing because all creeps try to act at once
     CRITICAL_ROLES: [
@@ -154,7 +155,7 @@ let mod = {
     AUTO_POWER_MINING: false, //set to false to disable power mining (recomended until 1-2 RCL8+ rooms  )
 //    MAX_AUTO_POWER_MINING_FLAGS: 1,
     POWER_MINE_LOG: true, //displays power mining info in console
-    REMOVE_CONSTRUCTION_FLAG: true, // if false,  will remain. This is good if a structure decays, it can rebuild
+    REMOVE_CONSTRUCTION_FLAG: false, // if false,  will remain. This is good if a structure decays, it can rebuild
 
 };
 module.exports = mod;

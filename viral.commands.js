@@ -33,7 +33,7 @@ Game.creeps['<creepName>'].move(RIGHT);
 Creep.action.travelling.assignRoom(Game.creeps['worker-1600-1'], Game.flags['Flag137'].pos.roomName)
 
 // force recycle a Creep
-Game.creeps['pioneer-Flag2-1'].data.creepType="recycler";
+Game.creeps['pioneer-Flag43-1'].data.creepType="recycler";
 
 // To override a module file create a copy of an existing module and name it "custom.<originalModuleName>". Then call this method (without ".js"):
 getPath('<originalModuleName>', true);
@@ -45,6 +45,7 @@ Game.market.createOrder(type, resourceType, price, totalAmount, roomName);
 
 //accept market sell or buy order
 Game.market.deal(orderId, amount, roomName);
+Game.market.deal('591511bc288438f4359b3a65', 2227, 'W45S87');
 
 //flush visuals heatmap
 _.forEach(Memory.rooms, r => delete r.heatmap);
@@ -54,7 +55,11 @@ _.forEach(Memory.rooms, r => delete r.heatmap);
 Game.rooms['roomName'].placeReactionOrder('labId', 'resourceId', amount);
 
 //resource management - maintain set amount in container
-Game.rooms['W45S88'].setStore('593cd1aa370ec0667c591657', RESOURCE_CATALYZED_GHODIUM_ACID, 3000);
+Game.rooms['W45S87'].setStore('595418f25af878770ddccd1f', RESOURCE_GHODIUM_OXIDE, 3000);
+Game.rooms['W45S87'].setStore('595399e81c49343c30a66898', RESOURCE_ZYNTHIUM_OXIDE, 3000);
+Game.rooms['W45S87'].setStore('5953d41082ff315108fae399', RESOURCE_KEANIUM_OXIDE, 3000);
+
+Game.rooms['W45S87'].setStore('595418f25af878770ddccd1f', RESOURCE_GHODIUM_HYDRIDE, 3000); // upgrader!!!!!
 
 //resource management - one off amount in container
 Game.rooms['roomName'].placeOrder('structureID', RESOURCE_TYPE, amount)
@@ -64,7 +69,7 @@ _(Game.creeps).filter({'data':{'creepType':'worker'}, 'room':{'name':'W49S88'}})
 // turn one creep into another
 _(Game.creeps).filter({'data':{'creepType':'remoteWorker'}}).map(x=>x.data.creepType='recycler')
 // assign actions to certain creeps
-_(Game.creeps).filter({'data':{'creepType':'miner'}, 'room':{'name':'W52S82'}}).map(x=>Creep.action.upgrading.assign(x));
+_(Game.creeps).filter({'data':{'creepType':'upgrader'}, 'room':{'name':'W54S82'}}).map(x=>Creep.action.boosting.assign(x));
 
 
 // Order all labs to store 2000 energy
@@ -94,3 +99,4 @@ room.processConstructionFlags()
 // signing a controller manually:
 Game.creeps['guard-Flag110-2'].signController(Game.getObjectById('58dbc3b58283ff5308a3dfbd'), 'This room has been inspected by Chuck Norris. He did not approve.');
 
+(function(){var roomname='W45S87'; Memory.rooms[roomname].resources.lab = []; for(var x in Memory.rooms[roomname].labs){ var lab = Memory.rooms[roomname].labs[x] ; var obj = {id:lab.id, orders:[], reactionState:'idle'}; Memory.rooms[roomname].resources.lab[x]=obj;}})();
