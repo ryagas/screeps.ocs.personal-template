@@ -59,7 +59,7 @@ Game.rooms['W45S87'].setStore('595418f25af878770ddccd1f', RESOURCE_GHODIUM_OXIDE
 Game.rooms['W45S87'].setStore('595399e81c49343c30a66898', RESOURCE_ZYNTHIUM_OXIDE, 3000);
 Game.rooms['W45S87'].setStore('5953d41082ff315108fae399', RESOURCE_KEANIUM_OXIDE, 3000);
 
-Game.rooms['W45S87'].setStore('595418f25af878770ddccd1f', RESOURCE_GHODIUM_HYDRIDE, 3000); // upgrader!!!!!
+Game.rooms['W45S87'].setStore('5955729c0a79d91a0a2481a4', RESOURCE_GHODIUM_HYDRIDE, 3000); // upgrader!!!!!
 
 //resource management - one off amount in container
 Game.rooms['roomName'].placeOrder('structureID', RESOURCE_TYPE, amount)

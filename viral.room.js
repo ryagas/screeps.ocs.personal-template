@@ -20,7 +20,7 @@ Room.COSTMATRIX_CACHE_VERSION = global.COMPRESS_COST_MATRICES ? 4 : 5; // change
 mod.extend = function(){
     // run extend in each of our submodules
     for (const key of Object.keys(Room._ext)) {
-        if (Room._ext[key].extend) Room._ext[key].extend();
+        if (Room._ext[key].extend()) Room._ext[key].extend();
     }
 
     let Structures = function(room){
