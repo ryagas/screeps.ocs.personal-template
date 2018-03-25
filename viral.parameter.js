@@ -99,9 +99,10 @@ let mod = {
     SPAWN_DEFENSE_ON_ATTACK: true, // This will attempt to store enough to have a defense and spawn troops when invaded.
     MANAGED_CONTAINER_TRIGGER: 0.30, // managed containers get filled below this relative energy amount and emptied when above 1-this value
     ROUTE_ROOM_COST: {// custom room routing cost: e.g. `{ 'W4N4': 11 }`. Affects bestSpawnRoomFor, Creep.Setup calculations, and travel cost predictions. Please call 'delete Memory.routeRange;' whenever you change this property.
-        'W49S84' : 1000000,
-        'W48S88' : 1000000,
-        'W55S86': 1000000}, 
+  //      'W49S84' : 1000000,
+  //      'W48S88' : 1000000,
+  //      'W55S86': 1000000
+      },
 //    TRAVELLING_BORDER_RANGE: 22, // room arrival distance for travelling and routes
 //    NOTIFICATE_INVADER: false, // Also log common 'Invader' hostiles
 //    NOTIFICATE_INTRUDER: true, // Log any hostiles in your rooms
@@ -139,7 +140,7 @@ let mod = {
     REMOTE_WORKER_MULTIPLIER: 1, // Number of workers spawned per remote mining room.
     PLAYER_WHITELIST: ['SirLovi','Asku','Kazume','Noxeth','MrDave','Telemac','Xephael','Zoiah','fsck-u','FaceWound','forkmantis','Migaaresno','xAix1999','silentpoots','arguinyano','OokieCookie','OverlordQ','Nibinhilion','Crowsbane','Yew','BogdanBiv','s1akr','Pandabear41','Logmadr','Patrik','novice','Conquest','ofirl','GeorgeBerkeley','TTR','tynstar','K-C','Hoekynl','Sunri5e','AgOrange','distantcam','Lisp','bbdMinimbl','Twill','Logxen','miR','Spedwards','Krazyfuq','Icesory','chobobobo','deft-code','mmmd','DKPlugins','pavelnieks','buckley310','almaravarion','SSH','Perrytheplatypus','Jnesselr','ryagas','xXtheguy52Xx','SEATURTLEKING','DasBrain','C00k1e_93','Currency', 'Bovius','Vykook','shedletsky','Aranatha','Montblanc', 'Davaned', 'OrangeXP'],
     // Don't attack. Must be a member of OCS for permanent whitelisting in git repository. But you can change your own copy... Please ask if you are interested in joining OCS :)
-    DEFENSE_BLACKLIST: ['W49S84','W48S87', 'W45S87', 'W51S83', 'W48S91'], // Don't defend those rooms (add room names). Blocks spawning via defense task (will not prevent offensive actions at all)
+    DEFENSE_BLACKLIST: [''], // Don't defend those rooms (add room names). Blocks spawning via defense task (will not prevent offensive actions at all)
     CRITICAL_BUCKET_LEVEL: 1000, // take action when the bucket drops below this value to prevent the bucket from actually running out
     CRITICAL_BUCKET_OVERFILL: 2000, // Overfill the bucket by this amount before disabling CPU throttle, this can reduce thrashing because all creeps try to act at once
     CRITICAL_ROLES: [
